@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 
 export default function Header() {
@@ -10,7 +9,7 @@ export default function Header() {
             setToggled(true);
         }
 
-        setExpanded(!expanded);
+        setExpanded(prevExp => !prevExp);
     };
 
     return <header className="header">

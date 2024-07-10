@@ -15,7 +15,7 @@ export default function Event(props) {
                 onSize({ width, height });
             }
         }
-    });
+    }, [onSize]);
 
     return <li ref={ref} className={'event' + (props.slim ? ' event_slim' : '')}>
         <button className="event__button">

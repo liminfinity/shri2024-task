@@ -109,12 +109,12 @@ const TABS = {
     }
 };
 for (let i = 0; i < 6; ++i) {
-    TABS.all.items = [...TABS.all.items, ...TABS.all.items];
+    TABS.all.items = [].concat(TABS.all.items, TABS.all.items);
 }
 const TABS_KEYS = Object.keys(TABS);
 
 export default function Main() {
-    const ref = useRef();
+    const ref = useRef(null);
     const initedRef = useRef(false);
     const [activeTab, setActiveTab] = useState('');
     const [hasRightScroll, setHasRightScroll] = useState(false);
@@ -124,7 +124,7 @@ export default function Main() {
             initedRef.current = true;
             setActiveTab(new URLSearchParams(location.search).get('tab') || 'all');
         }
-    });
+    }, [activeTab]);
 
     const onSelectInput = event => {
         setActiveTab(event.target.value);
@@ -142,7 +142,7 @@ export default function Main() {
         if (newHasRightScroll !== hasRightScroll) {
             setHasRightScroll(newHasRightScroll);
         }
-    });
+    }, [sizes, hasRightScroll]);
 
     const onArrowCLick = () => {
         const scroller = ref.current.querySelector('.section__panel:not(.section__panel_hidden)');
