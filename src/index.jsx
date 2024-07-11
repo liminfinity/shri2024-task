@@ -17,7 +17,3 @@ createRoot(document.getElementById('main')).render(
     <Main />
   </StrictMode>,
 )
-
-
-
-
